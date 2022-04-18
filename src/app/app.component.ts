@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Profile } from './models/Profile';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'abc';
+  @ViewChild(RegisterComponent) register;
+  @ViewChild(LoginComponent) login;
+  profile!: Profile;
+  card = 0;
+  receiveCard($event) {
+    this.card = $event
+  }
+  receiveProfile($event) {
+    this.profile = $event
+  }
 }
